@@ -1,0 +1,1408 @@
+/* الخطوط: Manrope للأرقام والعناوين، IBM Plex Sans Arabic للنصوص (يدعم العربي والإنجليزي) */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+
+/* ===================================================================
+   الألوان مأخوذة من شعار شاليهات ديفورا:
+   الرملي = لون القوس في الشعار | الحبر = لون الخطوط | السِّج = لون الاسم
+   =================================================================== */
+
+:root {
+  --linen: #f6f3ec;       /* خلفية الصفحة — أبيض مائل للرملي */
+  --card: #ffffff;        /* خلفية الكروت — أبيض الدائرة في الشعار */
+  --line: #e7e1d3;        /* الحدود — رمادي مشوب بالرملي، مو رمادي محايد */
+  --sand: #c6bca1;        /* الرملي: لون القوس في الشعار */
+  --sand-soft: #efeadf;   /* رملي فاتح للتعبئات الخفيفة */
+  --brand: #7e7152;       /* رملي غامق — الأزرار والعناصر التفاعلية */
+  --brand-dark: #6b5f44;  /* عند المرور بالماوس */
+  --ink: #1f1c16;         /* النص الأساسي — أسود دافئ كخطوط الشعار */
+  --muted: #646a58;       /* النص الثانوي — مشتق من لون اسم "شاليهات ديفورا" */
+  --clay: #9c4a33;        /* الحذف فقط */
+  --clay-soft: #f6e9e5;
+
+  /* تظليل ليالي نهاية الأسبوع — أزرق مخضرّ بارد يتباين مع اللوحة الدافئة */
+  --peak: #e8eff0;
+  --peak-hover: #e0eaec;
+  --peak-edge: #6f9298;
+
+  /* الخطوط */
+  --font-ui: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-num: Manrope, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(31, 28, 22, .04);
+  --shadow-lift: 0 6px 18px rgba(31, 28, 22, .09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--linen);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== الهيدر: الشعار + اسم الشاليهات ===== */
+
+.site-header {
+  background: var(--card);
+  border-bottom: 3px solid var(--sand);
+  padding: 14px 24px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== شريط التنقل ===== */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link {
+  padding: 7px 14px;
+  border-radius: 7px;
+  font-size: 14px;
+  color: var(--muted);
+  transition: background .15s, color .15s;
+}
+
+.nav-link:hover {
+  background: var(--sand-soft);
+  color: var(--ink);
+}
+
+.nav-link.active {
+  background: var(--sand-soft);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 var(--brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link { transition: none; }
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-ar {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.brand-en {
+  font-family: var(--font-num);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== الحاوية ===== */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-block: 28px 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+h1 {
+  font-family: var(--font-num);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  margin: 0 0 2px;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 26px;
+  font-size: 14px;
+}
+
+/* ===== شريط الفلترة: تعبئة رملية خفيفة، مو كارت أبيض آخر ===== */
+
+.panel {
+  background: var(--sand-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 26px;
+}
+
+.filter-row,
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+input[type="date"],
+input[type="number"] {
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+  background: var(--card);
+  color: var(--ink);
+}
+
+input:focus-visible,
+button:focus-visible,
+.card:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* ===== الأزرار ===== */
+
+button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 7px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+button:hover {
+  background: var(--brand-dark);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+button.secondary:hover {
+  background: var(--card);
+  color: var(--ink);
+}
+
+button.link-danger {
+  background: none;
+  color: var(--clay);
+  padding: 3px 8px;
+  font-size: 13px;
+}
+
+button.link-danger:hover {
+  background: var(--clay-soft);
+}
+
+/* ===== كروت الشاليهات ===== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 780px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 500px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+}
+
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+
+.card:hover {
+  border-color: var(--sand);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card:hover, button { transition: none; transform: none; }
+}
+
+.card-name {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.card-total {
+  display: block;
+  font-family: var(--font-num);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.card-total span {
+  display: inline;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-inline-start: 5px;
+}
+
+.card-count {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== شريط مقارنة الإيراد داخل كل كارت (نسبة للأعلى) ===== */
+
+.card-bar-track {
+  display: block;
+  margin-top: 12px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--sand-soft);
+  overflow: hidden;
+}
+
+.card-bar {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--sand);
+}
+
+/* ===== شارة أعلى شاليه إيرادًا ===== */
+
+.chip-top {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* ===== كارت شاليه بدون حجوزات في الفترة ===== */
+
+.card-empty {
+  opacity: .7;
+}
+
+.card-empty:hover {
+  opacity: 1;
+}
+
+.card-total-empty {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* ===== هيكل التحميل المؤقت (Skeleton) ===== */
+
+.skeleton-card {
+  cursor: default;
+}
+
+.skeleton-line {
+  display: block;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--sand-soft) 25%,
+    var(--line) 37%,
+    var(--sand-soft) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-name {
+  width: 55%;
+  height: 12px;
+  margin-bottom: 16px;
+}
+
+.skeleton-total {
+  width: 75%;
+  height: 25px;
+  margin-bottom: 12px;
+}
+
+.skeleton-count {
+  width: 45%;
+  height: 11px;
+}
+
+@keyframes skeleton-pulse {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line { animation: none; }
+}
+
+/* ===== الإجمالي العام: خلفية حبرية والرقم رملي (نفس تباين الشعار) ===== */
+
+.grand-total {
+  margin-top: 22px;
+  background: var(--ink);
+  color: var(--sand-soft);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grand-total .label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.grand-total .value {
+  font-family: var(--font-num);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--sand);
+}
+
+/* ===== الجدول ===== */
+
+.table-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: right;
+  padding: 12px 18px;
+  font-size: 14px;
+}
+
+thead th {
+  background: var(--sand-soft);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody td {
+  border-bottom: 1px solid var(--line);
+}
+
+/* تلوين متناوب: كل حجز يتميّز عن الذي قبله بلون خفيف،
+   فتقرأ الصف الواحد بسهولة بدل ما تتداخل الصفوف بصريًا. */
+tbody tr:nth-child(even) td {
+  background: var(--linen);
+}
+
+/* على هذا اللون، لون زر «تعديل» الأساسي تباينه 4.34 وهو دون الحد،
+   فنغمّقه ليصل 5.66 ويبقى مقروءًا. */
+tbody tr:nth-child(even) td button.link-action {
+  color: var(--brand-dark);
+}
+
+tbody tr:hover td {
+  background: #fbfaf6;
+}
+
+td.num {
+  font-family: var(--font-num);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+tfoot td {
+  font-weight: 700;
+  border-bottom: none;
+  background: var(--sand-soft);
+}
+
+tfoot td.num {
+  font-weight: 700;
+}
+
+/* ===== حالات ===== */
+
+.message {
+  padding: 12px 14px;
+  border-radius: 7px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.message.error {
+  background: var(--clay-soft);
+  color: var(--clay);
+  border: 1px solid #ecd6cf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.message.error button {
+  flex-shrink: 0;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 22px 18px;
+  margin: 0;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+.back-link:hover {
+  color: var(--brand);
+}
+
+
+/* ===== حقل غير صحيح ===== */
+
+input.invalid {
+  border-color: var(--clay);
+  background: var(--clay-soft);
+}
+
+.field-error {
+  font-size: 12px;
+  color: var(--clay);
+}
+
+/* ===== عمود الإجراءات في الجدول ===== */
+
+.actions-col {
+  text-align: left;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.confirm-text {
+  font-size: 13px;
+  color: var(--muted);
+  margin-inline-end: 2px;
+}
+
+/* أزرار صغيرة داخل صفوف الجدول */
+
+button.small {
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+button.danger {
+  background: var(--clay);
+}
+
+button.danger:hover {
+  background: #853d2a;
+}
+
+button.link-action {
+  background: none;
+  color: var(--brand);
+  padding: 3px 8px;
+  font-size: 13px;
+}
+
+button.link-action:hover {
+  background: var(--sand-soft);
+}
+
+/* ===== الصف أثناء التعديل ===== */
+
+tr.editing td {
+  background: var(--sand-soft);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+tr.editing .field {
+  gap: 0;
+}
+
+tr.editing .field label:empty {
+  display: none;
+}
+
+tr.editing input {
+  width: 100%;
+  min-width: 120px;
+  max-width: 170px;
+}
+
+/* عرض مناسب لحقول التاريخ والسعر (بدون هذا تمتد لعرض افتراضي كبير) */
+
+.filter-row input,
+.form-row input {
+  max-width: 170px;
+}
+
+.form-row .field.grow input {
+  max-width: none;
+}
+
+/* ===================================================================
+   شريط اختيار الفترة المحاسبية
+   =================================================================== */
+
+.period-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+select {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: var(--font-ui);
+  background: var(--card);
+  color: var(--ink);
+  min-width: 230px;
+  cursor: pointer;
+}
+
+select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+button.step {
+  padding: 7px 14px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.text-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 13px;
+  color: var(--brand);
+  cursor: pointer;
+}
+
+.text-link:hover {
+  color: var(--brand-dark);
+  text-decoration: underline;
+  background: none;
+}
+
+.custom-range {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.period-note {
+  margin: -14px 0 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.period-note a {
+  color: var(--brand);
+}
+
+.period-note a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   صفحة مقارنة الفترات
+   =================================================================== */
+
+.chip {
+  display: inline-block;
+  margin-inline-start: 8px;
+  padding: 1px 9px;
+  border-radius: 20px;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+td.strong {
+  font-weight: 700;
+}
+
+.bar-col {
+  width: 30%;
+  min-width: 90px;
+}
+
+.bar {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--sand);
+}
+
+/* ===================================================================
+   حقل التاريخ + التقويم
+   =================================================================== */
+
+.date-input {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.date-input input {
+  flex: 1;
+}
+
+button.calendar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 0 11px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+button.calendar-toggle:hover {
+  color: var(--brand);
+}
+
+button.calendar-toggle:hover {
+  background: var(--sand-soft);
+  border-color: var(--sand);
+}
+
+/* position: fixed عشان ما ينقص داخل الجداول ذات overflow */
+.calendar {
+  position: fixed;
+  z-index: 50;
+  width: 268px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(31, 28, 22, .16);
+  padding: 12px;
+}
+
+.calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.calendar-head button {
+  background: none;
+  color: var(--muted);
+  padding: 2px 12px;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.calendar-head button:hover {
+  background: var(--sand-soft);
+  color: var(--ink);
+}
+
+.calendar-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar-weekdays {
+  margin-bottom: 4px;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+button.calendar-day {
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-num);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  padding: 7px 0;
+  border-radius: 6px;
+}
+
+button.calendar-day:hover {
+  background: var(--sand-soft);
+}
+
+button.calendar-day.today {
+  box-shadow: inset 0 0 0 1px var(--sand);
+}
+
+button.calendar-day.selected {
+  background: var(--brand);
+  color: #fff;
+}
+
+button.calendar-day.selected:hover {
+  background: var(--brand-dark);
+}
+
+.calendar-foot {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+}
+
+/* ===================================================================
+   حقول النص: اسم الحاجز والملاحظات
+   =================================================================== */
+
+input[type="text"] {
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: var(--font-ui);
+  background: var(--card);
+  color: var(--ink);
+}
+
+/* حقل الملاحظات يأخذ المساحة الباقية في السطر */
+.field.grow {
+  flex: 1;
+  min-width: 190px;
+}
+
+.field.grow input {
+  width: 100%;
+  max-width: none;
+}
+
+/* عمود الملاحظات في الجدول.
+   افتراضيًا يعرض حتى ثلاثة أسطر، والضغط عليه يفتح النص كاملًا.
+   استخدمنا الالتفاف بدل القصّ في سطر واحد لأن الملاحظات غالبًا جُمل. */
+.notes-cell {
+  max-width: 300px;
+  color: var(--muted);
+  white-space: normal;
+  vertical-align: top;
+}
+
+/* النص نفسه داخل الخلية — الالتفاف والقصّ يطبَّقان عليه لا على الـ td،
+   لأن تغيير display للخلية يكسر بناء الجدول. */
+.notes-text {
+  cursor: pointer;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* بعد الضغط: يظهر النص كاملًا مهما طال */
+.notes-text.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  color: var(--ink);
+}
+
+/* الشرطة التي تظهر مكان القيمة الفاضية */
+.dash {
+  color: var(--line);
+}
+
+/* في وضع التعديل، حقل الملاحظات أوسع من الباقي */
+tr.editing input[type="text"] {
+  max-width: 200px;
+}
+
+/* ===================================================================
+   صفحة الشاليه: رأس الصفحة وشريط المؤشرات
+   =================================================================== */
+
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.page-head .subtitle {
+  margin-bottom: 0;
+}
+
+/* أربع بطاقات ملتصقة بخط فاصل واحد بينها بدل أربعة كروت منفصلة */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 480px) {
+  .stat-strip { grid-template-columns: minmax(0, 1fr); }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: var(--card);
+  padding: 15px 18px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-family: var(--font-num);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===================================================================
+   عمود اليوم وتمييز ليالي نهاية الأسبوع
+   =================================================================== */
+
+td.muted-cell {
+  color: var(--muted);
+}
+
+tbody tr.peak td {
+  background: var(--peak);
+}
+
+tbody tr.peak td.muted-cell {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* علامة رفيعة على حافة صف نهاية الأسبوع */
+tbody tr.peak td:first-child {
+  box-shadow: inset -3px 0 0 var(--peak-edge);
+}
+
+/* التمرير بالماوس يبقى واضحًا فوق التظليل */
+tbody tr.peak:hover td {
+  background: var(--peak-hover);
+}
+
+/* زر التعديل يُغمَّق قليلًا على الخلفية الباردة ليبقى مقروءًا */
+tbody tr.peak td button.link-action {
+  color: var(--brand-dark);
+}
+
+/* صف التعديل يغلب على تظليل نهاية الأسبوع */
+tbody tr.editing td,
+tbody tr.editing:hover td {
+  background: var(--sand-soft);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.legend-mark {
+  display: block;
+  width: 3px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--peak-edge);
+  flex-shrink: 0;
+}
+
+/* ===================================================================
+   زر الخروج في شريط التنقل
+   =================================================================== */
+
+.nav-logout {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 6px 14px;
+  font-size: 13px;
+  margin-inline-start: 6px;
+}
+
+.nav-logout:hover {
+  background: var(--clay-soft);
+  border-color: #ecd6cf;
+  color: var(--clay);
+}
+
+/* ===================================================================
+   صفحة تسجيل الدخول
+   الهيدر مخفي هنا، فالصفحة تتوسّط الشاشة وحدها
+   =================================================================== */
+
+.login-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 78vh;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--sand);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lift);
+  padding: 34px 30px 30px;
+}
+
+/* ===== الشعار والاسم ===== */
+
+.login-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-head img {
+  display: block;
+}
+
+.login-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.login-name-ar {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.login-name-en {
+  font-family: var(--font-num);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* فاصل رملي قصير يفصل الهوية عن النموذج */
+.login-divider {
+  align-self: center;
+  width: 48px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--sand);
+}
+
+.login-lead {
+  margin: -4px 0 2px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ===== رسالة الخطأ ===== */
+
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 0;
+}
+
+.login-error svg {
+  flex-shrink: 0;
+}
+
+/* ===== حقل كلمة المرور مع زر الإظهار ===== */
+
+.password-input {
+  position: relative;
+  display: flex;
+}
+
+.password-input input {
+  width: 100%;
+  padding: 12px 13px;
+  padding-inline-end: 44px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  letter-spacing: .04em;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.password-toggle {
+  position: absolute;
+  inset-inline-end: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: none;
+  border-radius: 6px;
+  color: var(--muted);
+}
+
+.password-toggle:hover {
+  background: var(--sand-soft);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .password-toggle { transform: translateY(-50%); }
+}
+
+/* ===== زر الدخول ===== */
+
+.login-button {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 2px;
+}
+
+.login-foot {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ===================================================================
+   جدول الحجوزات على الجوال
+   -------------------------------------------------------------------
+   ستة أعمدة لا تتسع في 375px، فكان عمودا «ملاحظات» و«إجراءات»
+   يخرجان خارج الشاشة ولا يراهما المستخدم أصلًا.
+   الحل: نحوّل كل صف إلى بطاقة مستقلة، وكل خلية تعرض عنوانها
+   بجانب قيمتها عبر data-label المكتوب في الـ JSX.
+   =================================================================== */
+@media (max-width: 640px) {
+
+  .table-wrap {
+    overflow-x: visible;      /* ما عاد فيه تمرير أفقي */
+    border: 0;
+    background: none;
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* رأس الجدول ما له معنى في وضع البطاقات — العناوين صارت داخل الخلايا */
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px 14px;
+    margin-bottom: 12px;
+  }
+
+  /* التلوين المتناوب على الجوال يغطي البطاقة كلها لا الخلايا فقط،
+     وإلا بقيت حواف بيضاء أعلى البطاقة وأسفلها. */
+  tbody tr:nth-child(even) {
+    background: var(--linen);
+  }
+
+  tbody tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  /* ليالي نهاية الأسبوع: شريط جانبي بدل تلوين الصف كامل */
+  table tbody tr.peak {
+    background: var(--peak);
+    border-inline-start: 3px solid var(--peak-edge);
+  }
+
+  table tbody td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 9px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: start;
+  }
+
+  table tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  /* عنوان الحقل يظهر يمينًا والقيمة يسارًا */
+  table tbody td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* الخلية الفاضية من data-label (لا يوجد عنوان) تبقى كما هي */
+  table tbody td:not([data-label])::before {
+    content: none;
+  }
+
+  /* الملاحظة الطويلة تاخذ عرض البطاقة كاملًا تحت عنوانها */
+  table tbody td.notes-cell {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    max-width: none;
+  }
+
+  .notes-text {
+    max-width: none;
+  }
+
+  /* أزرار التعديل والحذف تبقى ظاهرة دائمًا في آخر البطاقة */
+  table tbody td.actions-col {
+    justify-content: space-between;
+  }
+
+  .row-actions {
+    justify-content: flex-end;
+  }
+
+  /* وضع التعديل: العنوان فوق والحقل تحته بعرض البطاقة كاملًا.
+     لو تركناهما في سطر واحد، الحقل بعرض 100% يزحم العنوان ويقصّه. */
+  tbody tr.editing td {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  tbody tr.editing td::before {
+    align-self: flex-start;
+  }
+
+  /* لون وضع التعديل يغطي البطاقة كلها بدل مستطيل داخلي غير متساوٍ */
+  tbody tr.editing {
+    background: var(--sand-soft);
+  }
+
+  tbody tr.editing td,
+  tbody tr.editing:hover td {
+    background: transparent;
+  }
+
+  tr.editing input[type="text"],
+  tr.editing input[type="number"] {
+    max-width: none;
+    width: 100%;
+  }
+
+  tr.editing .field,
+  tr.editing .date-field {
+    width: 100%;
+  }
+
+  /* أزرار الحفظ والإلغاء تبقى في سطر واحد بمحاذاة البداية */
+  tbody tr.editing td.actions-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* صف الإجمالي في تذييل الجدول يبقى بطاقة واحدة بارزة */
+  table tfoot,
+  table tfoot tr,
+  table tfoot td {
+    display: block;
+    width: 100%;
+  }
+
+  table tfoot tr {
+    display: flex;
+    justify-content: space-between;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+
+  table tfoot td {
+    border: 0;
+    padding: 0;
+    width: auto;
+  }
+}

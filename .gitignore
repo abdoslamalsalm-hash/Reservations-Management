@@ -1,0 +1,8 @@
+# ملفات نظام التشغيل والمحرر
+.DS_Store
+*.log
+
+# أدوات محلية — لا تُرفع
+.claude/
+.agents/
+skills-lock.json

@@ -1,0 +1,18 @@
+# ===== Java / Maven =====
+backend/target/
+*.class
+
+# ===== Node / Next.js =====
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# ===== إعدادات محلية — لا تُرفع =====
+frontend/.env.local
+.env
+
+# ===== نظام التشغيل والمحرر =====
+.DS_Store
+*.log
+.idea/
+.vscode/
